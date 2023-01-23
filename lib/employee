@@ -7,23 +7,24 @@ class employee {
 
     // Method to get employee name
     getName() {
-        console.log(`${this.name}`);
+        return this.name;
     }
         
-    // Method to get employkee ID
+    // Method to get employee ID
     getId() {
-        console.log(`Employee ID: ${this.id}`);
+        return this.id;
     }
         
     // Method to get employee email
     getEmail() {
-        console.log (`Employee email: ${this.email}`);
+        return this.email;
     }
         
     //Method to get employee's role
     getRole() {
-        console.log(`${this.employee}`);
+        return 'Employee';
     }  
     }
-    
-    module.exports = employee;
+
+// to export    
+module.exports = employee;
