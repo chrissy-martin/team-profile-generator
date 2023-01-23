@@ -1,35 +1,25 @@
-class intern {
-    constructor(name, id, email, school) {
-        this.name = name;
-        this.id = id;
-        this.email = email;
-        this.school = school;
-      }
+// imports employee constructor 
+const employee = require('./employee');
 
-          
-    getName() {
-        console.log(`${this.name}`);
-    }
+// intern constructor extends employee constructor 
+class intern extends employee  {
+    constructor (name, id, email, school) {
+        // gets methods form employee classs
+        super(name, id, email); 
 
-    // Method to get employee ID
-    getId() {
-        console.log(`Employee ID: ${this.id}`);
+        this.school = school; 
     }
 
-    // Method to get employee email
-    getEmail() {
-        console.log (`Employee email: ${this.email}`);
+    //method to return school from input
+    getSchool () {
+        return this.school;
     }
 
-    //Method to get intern shcool
-    getSchool() {
-        console.log(`${this.school}`);
+    // override employee role to intern
+    getRole () {
+        return 'Intern';
     }
+}
 
-    //Method to get employee's role
-    getRole() {
-        console.log(`${this.employee}`);
-    }
-    }
-    
-    module.exports = intern;
+// to export 
+module.exports = intern; 

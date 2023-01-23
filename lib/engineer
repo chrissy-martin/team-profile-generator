@@ -1,35 +1,25 @@
-class engineer {
-    constructor(name, id, email, github) {
-        this.name = name;
-        this.id = id;
-        this.email = email;
-        this.github = github;
-      }
+// imports employee constructor 
+const employee = require('./employee');
 
-    //Method to get engineer name
-    getName() {
-        console.log(`${this.name}`);
+// engineer constructor extends employee constructor 
+class engineer extends employee  {
+    constructor (name, id, email, github) {
+        // gets methods form employee classs
+        super(name, id, email); 
+
+        this.github = github; 
     }
 
-    // Method to get employee ID
-    getId() {
-        console.log(`Employee ID: ${this.id}`);
-    }
-
-    // Method to get employee email
-    getEmail() {
-        console.log (`Employee email: ${this.email}`);
-    }
-
-    //Method to get engineer github
+    //Method to get engineer github from input
     getGithub() {
-        console.log(`GitHub: ${this.github}`);
+        return this.github;
     }
 
-    //Method to get employee's role
+    //Method to get role
     getRole() {
-        console.log(`${this.employee}`);
+       return 'Engineer';
     }
     }
-    
-    module.exports = engineer;
+
+//to export
+module.exports = engineer;

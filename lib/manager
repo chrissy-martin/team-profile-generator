@@ -1,30 +1,25 @@
-class manager {
+// imports employee constructor 
+const employee = require('./employee');
+
+// manager constructor extends employee constructor 
+class manager extends employee {
     constructor(name, id, email, officeNumber) {
-        this.name = name;
-        this.id = id;
-        this.email = email;
-        this.officeNumbaer = officeNumber;
-      }
+        // gets methods form employee classs
+        super(name, id, email);
 
-      
-    getName() {
-        console.log(`${this.name}`);
+        this.officeNumber = officeNumber;
+    } 
+
+    //Method to get manager office number
+    getOfficeNumber() {
+        return this.officeNumber;
     }
 
-    // Method to get employee ID
-    getId() {
-        console.log(`Employee ID: ${this.id}`);
-    }
-
-    // Method to get employee email
-    getEmail() {
-        console.log (`Employee email: ${this.email}`);
-    }
-
-    //Method to get employee's role
+    //Method to get role
     getRole() {
-        console.log(`${this.employee}`);
+        return 'Manager';
     }
     }
-    
-    module.exports = manager;
+
+//to export
+module.exports = manager;
