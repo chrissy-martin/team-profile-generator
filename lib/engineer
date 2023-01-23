@@ -1,0 +1,35 @@
+class engineer {
+    constructor(name, id, email, github) {
+        this.name = name;
+        this.id = id;
+        this.email = email;
+        this.github = github;
+      }
+
+    //Method to get engineer name
+    getName() {
+        console.log(`${this.name}`);
+    }
+
+    // Method to get employee ID
+    getId() {
+        console.log(`Employee ID: ${this.id}`);
+    }
+
+    // Method to get employee email
+    getEmail() {
+        console.log (`Employee email: ${this.email}`);
+    }
+
+    //Method to get engineer github
+    getGithub() {
+        console.log(`GitHub: ${this.github}`);
+    }
+
+    //Method to get employee's role
+    getRole() {
+        console.log(`${this.employee}`);
+    }
+    }
+    
+    module.exports = engineer;

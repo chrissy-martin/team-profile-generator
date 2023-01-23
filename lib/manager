@@ -1,0 +1,30 @@
+class manager {
+    constructor(name, id, email, officeNumber) {
+        this.name = name;
+        this.id = id;
+        this.email = email;
+        this.officeNumbaer = officeNumber;
+      }
+
+      
+    getName() {
+        console.log(`${this.name}`);
+    }
+
+    // Method to get employee ID
+    getId() {
+        console.log(`Employee ID: ${this.id}`);
+    }
+
+    // Method to get employee email
+    getEmail() {
+        console.log (`Employee email: ${this.email}`);
+    }
+
+    //Method to get employee's role
+    getRole() {
+        console.log(`${this.employee}`);
+    }
+    }
+    
+    module.exports = manager;

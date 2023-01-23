@@ -1,0 +1,29 @@
+class employee {
+    constructor(name, id, email) {
+        this.name = name;
+        this.id = id;
+        this.email = email;
+      }
+
+    // Method to get employee name
+    getName() {
+        console.log(`${this.name}`);
+    }
+        
+    // Method to get employkee ID
+    getId() {
+        console.log(`Employee ID: ${this.id}`);
+    }
+        
+    // Method to get employee email
+    getEmail() {
+        console.log (`Employee email: ${this.email}`);
+    }
+        
+    //Method to get employee's role
+    getRole() {
+        console.log(`${this.employee}`);
+    }  
+    }
+    
+    module.exports = employee;

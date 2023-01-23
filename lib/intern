@@ -1,0 +1,35 @@
+class intern {
+    constructor(name, id, email, school) {
+        this.name = name;
+        this.id = id;
+        this.email = email;
+        this.school = school;
+      }
+
+          
+    getName() {
+        console.log(`${this.name}`);
+    }
+
+    // Method to get employee ID
+    getId() {
+        console.log(`Employee ID: ${this.id}`);
+    }
+
+    // Method to get employee email
+    getEmail() {
+        console.log (`Employee email: ${this.email}`);
+    }
+
+    //Method to get intern shcool
+    getSchool() {
+        console.log(`${this.school}`);
+    }
+
+    //Method to get employee's role
+    getRole() {
+        console.log(`${this.employee}`);
+    }
+    }
+    
+    module.exports = intern;
