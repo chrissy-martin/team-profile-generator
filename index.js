@@ -64,11 +64,11 @@ const questions = [
 
 // function to write HTML file
 function writeToFile(fileName, data) {
-  fs.writeFile(`${fileName}.md`, generateMarkdown(data), "utf8", function (error) {
+  fs.writeFile(`${fileName}.md`, generateHTML(data), "utf8", function (error) {
       if (error) {
           console.log(error);
       } else {
-          console.log(`Congratulations! Your README has been saved to ${fileName}.md.`);
+          console.log(`Congratulations! Your HTML file has been saved to ${fileName}.html!`);
       }
   });
 }
