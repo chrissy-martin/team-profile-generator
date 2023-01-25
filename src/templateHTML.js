@@ -1,5 +1,4 @@
 //create the team cards
-const generateHTML = team => {
 
   // create manager card
   const generateManager = manager => {
@@ -37,7 +36,7 @@ const generateHTML = team => {
       </div>
     </div>
     `;
-  };
+  }
 
   //create intern card
   const generateIntern = intern => {
@@ -56,35 +55,47 @@ const generateHTML = team => {
       </div>
     </div>
     `;
-  };
+  }
 
-  const html = [];
-  
-  html.push(
-    team
-      .filter((employee) => employee.getRole() === "Manager")
-      .map((manager) => generateManager(manager))
-  );
-  html.push(
-    team
-      .filter((employee) => employee.getRole() === "Engineer")
-      .map((engineer) => generateEngineer(engineer))
-      .join("")
-  );
-  html.push(
-    team
-      .filter((employee) => employee.getRole() === "Intern")
-      .map((intern) => generateIntern(intern))
-      .join("")
-  );
+  generateHTML = (data) => {
 
-  return html.join("");
-
-};
+    empList = [];
+    
+    for (let i = 0; i < data.length; i++) {
+      const employee = data[i];
+      const role = employee.getRole(); 
 
 
-//export to create HTML file
-module.exports = team => {
+      if (role === 'Manager') {
+          const managerCard = generateManager(employee);
+
+          empList.push(managerCard);
+      }
+
+      if (role === 'Engineer') {
+          const engineerCard = generateEngineer(employee);
+
+          empList.push(engineerCard);
+      }
+
+      if (role === 'Intern') {
+          const internCard = generateIntern(employee);
+
+          empList.push(internCard);
+        }
+    }
+    const teamList = empList.join(''); 
+
+    const generatePage = HTMLPage(teamList)
+    return generatePage; 
+
+}
+
+
+
+
+// create HTML file
+const HTMLPage = teamList => {
 
 `<!DOCTYPE html>
 <html lang="en">
@@ -114,7 +125,7 @@ module.exports = team => {
         <div class="row">
             <div class="card-columns"></div>
             <div class="team-area col-12 d-flex justify-content-center card-deck">
-                ${generateHTML(team)}
+                ${teamList}
             </div>
         </div>
     </div>
@@ -127,5 +138,8 @@ module.exports = team => {
 </body>
 
 </html>`;
+
 }
 
+//export to index
+module.exports = generateHTML;
