@@ -69,6 +69,7 @@
       if (role === 'Manager') {
           const managerCard = generateManager(employee);
 
+          
           empList.push(managerCard);
       }
 
