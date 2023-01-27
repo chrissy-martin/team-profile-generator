@@ -1,7 +1,8 @@
 //create the team cards
+const generateTeam = (team) => {
 
   // create manager card
-  const generateManager = manager => {
+  const generateManager = (manager) => {
       return `
       <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="card h-100">
@@ -20,7 +21,7 @@
   };
 
   //create engineer card
-  const generateEngineer = engineer => {
+  const generateEngineer = (engineer) => {
     return `
     <div class="row row-cols-1 row-cols-md-3 g-4">
       <div class="card h-100">
@@ -39,7 +40,7 @@
   }
 
   //create intern card
-  const generateIntern = intern => {
+  const generateIntern = (intern) => {
     return `
     <div class="row row-cols-1 row-cols-md-3 g-4">
       <div class="card h-100">
@@ -55,135 +56,40 @@
       </div>
     </div>
     `;
-  }
-
-//   generateHTML = mergeArr => {
-
-//     empList = [];
-    
-//     for (let i = 0; i < mergeArr.length; i++) {
-//       const role = employee.getRole(); 
-
-
-//       if (role === 'Manager') {
-//           const managerCard = generateManager(employee);
-
-
-//           empList.push(managerCard);
-//       }
-
-//       if (role === 'Engineer') {
-//           const engineerCard = generateEngineer(employee);
-
-//           empList.push(engineerCard);
-//       }
-
-//       if (role === 'Intern') {
-//           const internCard = generateIntern(employee);
-
-//           empList.push(internCard);
-//         }
-//     }
-//     const teamList = empList.join(''); 
-//     return HTMLPage(teamList);
-//     // const generatePage = HTMLPage(teamList)
-//     // return generatePage; 
-
-// }
-
-// function teamList(data) {
-//   return data
-//     .map(x => {
-//       let position = x.getRole();
-//       switch (position) {
-//         case "Manager":
-//           return generateManager(x);
-//           break;
-//         case "Engineer":
-//           return generateEngineer(x);
-//           break;
-//         case "Intern":
-//           return generateIntern(x);
-//           break;
-//       }
-//     })
-//     .join("\n");
-// }
-
-// const teamList = teamArray => {
-//   let teamArr = [];
-//   const manager = teamArray.filter(team => {
-//       return team.getRole() === 'Manager';
-//   });
-//   const engineer = teamArray.filter(team => {
-//       return team.getRole() === 'Engineer';
-//   });
-//   const intern = teamArray.filter(team => {
-//       return team.getRole() === 'Intern';
-//   });
-//   if (manager) {
-//     teamArr.push(generateManager(managerTitle));
-//   } 
-//   if (engineer) {
-//     teamArr.push(generateEngineer(engineerTitle));
-//   } 
-//   if (intern) {
-//     teamArr.push(generateIntern(internTitle));
-//   }
-//   return teamArr.join('');
-//   };
-
-
   
-// push array to page 
-generateHTML = (data) => {
-
-  // array for cards 
-  pageArray = []; 
-
-  for (let i = 0; i < data.length; i++) {
-      const employee = data[i];
-      const role = employee.getRole(); 
-
-
-      // call manager function
-      if (role === 'manager') {
-          const managerCard = generateManager(employee);
-
-          pageArray.push(managerCard);
-      }
-
-      // call engineer function
-      if (role === 'engineer') {
-          const engineerCard = generateEngineer(employee);
-
-          pageArray.push(engineerCard);
-      }
-
-      // call intern function 
-      if (role === 'intern') {
-          const internCard = generateIntern(employee);
-
-          pageArray.push(internCard);
-      }
-      
   }
 
-  // joining strings 
-  const teamList = pageArray.join('')
+      // Create an empty array for the html cards
+      const html = [];
 
-  // return to generated page
-  const generateTeam = generateTeamPage(teamList); 
-  return generateTeam;
+      // Add the manager to the empty array 
+      html.push(team.filter((employee) => employee.getRole() === 'Manager').map((manager) => generateManager(manager)));
+  
+      // Add the engineers to the array 
+      html.push(
+          team
+              .filter((employee) => employee.getRole() === 'Engineer')
+              .map((engineer) => generateEngineer(engineer))
+              .join('')
+      );
+  
+      // Add the interns to the array
+      html.push(
+          team
+              .filter((employee) => employee.getRole() === 'Intern')
+              .map((intern) => generateIntern(intern))
+              .join('')
+      );
+  
+      // Return the Completed HTML
+      return html.join('');
+  };
+//   
 
-}
-
-// generate html page 
-const generateTeamPage = function (teamList) {   
 
 // create HTML file
-// function generateHTML(data) {
-  return`<!DOCTYPE html>
+const generateHTML= (team) => 
+  `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -211,7 +117,7 @@ const generateTeamPage = function (teamList) {
         <div class="row">
             <div class="card-columns"></div>
             <div class="team-area col-12 d-flex justify-content-center card-deck">
-                ${teamList}
+                ${generateTeam(team)}
             </div>
         </div>
     </div>
@@ -225,7 +131,6 @@ const generateTeamPage = function (teamList) {
 
 </html>`;
 
-}
 
 //export to index
 module.exports = generateHTML;

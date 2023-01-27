@@ -1,11 +1,11 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-
 const generateHTML = require('./src/templateHTML');
 
 const engineer = require('./lib/engineer');
 const intern = require('./lib/intern');
-const manager = require('./lib/manager');
+const manager = require('./lib/engineer');
+
 
 const teamList = [];
 
@@ -126,21 +126,11 @@ const addMember = () => {
     });
 };
 
-// function to write HTML file
-const writeFile = data => {
-  fs.writeFile('./dist/index.html', "utf8", err => {
-      if (err) {
-          console.log(err);
-// function writeFile(fileName, data) {
-//   fs.writeFile(`${fileName}.html`, generateHTML(data), "utf8", function (error) {
-//       if (error) {
-//           console.log(error);
-//           return;
-// const writeFile = fileContent => {
-//   fs.writeFile('./dist/index.html', fileContent, err => {
-//     if (err) {
-//       console.log(err);
-      return;
+//creates the HTML file
+function writeFile(fileName, data) {
+  fs.writeFile(`${fileName}.html`, generateHTML(data), "utf8", function (error) {
+      if (error) {
+          console.log(error);
     }
     else{
       console.log('Congratulations! Your HTML file has been saved in the dist folder!');
@@ -149,7 +139,7 @@ const writeFile = data => {
 };
 
 
-//  function to initialize app
+// function to initialize app
 function init() {
   inquirer
       .prompt(questions)
