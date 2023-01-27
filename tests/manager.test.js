@@ -9,7 +9,7 @@ describe('Manager', () => {
             expect(manager.name).toEqual('Chrissy');
             expect(manager.id).toEqual(18);
             expect(manager.email).toEqual('chrissy@email.com');
-            expect(manager.officenumber).toEqual(258)
+            expect(manager.officeNumber).toEqual(258)
         });
     });
 
