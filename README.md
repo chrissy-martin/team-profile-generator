@@ -9,7 +9,7 @@ A Node.js command-line application that takesin information about employees on a
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
-- [Contributing](#contribution)
+- [Contribution](#contribution)
 - [Testing](#testing)
 - [Questions](#questions)
 
@@ -34,7 +34,7 @@ Feel free to contribute as needed!
 
 ## Testing:
 
-run "npm test" to run tests on the constructors.
+run "npm test" in Node.js to run tests on the constructors.
 
 
 ## Questions:

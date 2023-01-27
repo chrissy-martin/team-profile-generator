@@ -9,79 +9,8 @@ const manager = require('./lib/manager');
 
 const teamList = [];
 
-//  questions for user input
 
-// Manager questions
-// const addManager = () => {
-//   return inquirer
-//     .prompt ([
-//       {
-//           type: 'input',
-//           name: 'name',
-//           message: 'Who is the manager of this team?', 
-//           validate: nameInput => {
-//               if (nameInput) {
-//                   return true;
-//               } else {
-//                   console.log ("Please enter the manager's name!");
-//                   return false; 
-//               }
-//           }
-//       },
-//       {
-//           type: 'input',
-//           name: 'id',
-//           message: "Please enter the manager's ID number.",
-//           validate: nameInput => {
-//               if  (isNaN(nameInput)) {
-//                   console.log ("Please enter the manager's ID!")
-//                   return false; 
-//               } else {
-//                   return true;
-//               }
-//           }
-//       },
-//       {
-//           type: 'input',
-//           name: 'email',
-//           message: "What is the manager's email address?",
-//           validate: email => {
-//               valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
-//               if (valid) {
-//                   return true;
-//               } else {
-//                   console.log ('Please enter an email!')
-//                   return false; 
-//               }
-//           }
-//       },
-//       {
-//           type: 'input',
-//           name: 'officeNumber',
-//           message: "What is the manager's office number",
-//           validate: nameInput => {
-//               if  (isNaN(nameInput)) {
-//                   console.log ('Please enter an office number!')
-//                   return false; 
-//               } else {
-//                   return true;
-//               }
-//           }
-//       }
-//   ])
-//   .then(managerInput => {
-//       const  { name, id, email, officeNumber } = managerInput; 
-//       const manager = new manager (name, id, email, officeNumber);
-
-//       team.push(manager); 
-//       console.log(manager); 
-//   })
-// };
-
-// Engineer questions 
-
-
-
+//prompt questions
 const questions = [
   {
     type: 'list',
@@ -171,45 +100,47 @@ const questions = [
         return false;
       }
     }
-  },
-  {
-    type: 'confirm',
-    name: 'confirmAddEmployee',
-    message: 'Would you like to add a new employee?',
-    default: true
   }
 ];
 
-function addMember() {
-  // ask to add additional member
+//prompt questions to add more team members
+const addMember = () => {
   inquirer
+    .prompt([
+      {
+        type: "list",
+      name: "add",
+      message: "Would you like to add a new employee?",
+      choices: ["Yes", "No"]
+      }
+    ])
+    .then(function(res) {
+      if (res.add === "Yes") {
+        inquirer
       .prompt(questions)
-      .then((data) => {
-          console.log(data);
-          switch (data.member) {
-              case "Engineer":
-                  engineer();
-                  break;
-              case "Intern":
-                  intern();
-                  break;
-              case "Finish Building Team":
-                  
-                  generateHTML(); 
-                  console.log(teamList); 
-                  break;
-              default:
-                  return;
-          }
-      });
-}
+
+      } else {
+        console.log("Done");
+        completedTeam(teamList);
+      }
+    });
+};
 
 // function to write HTML file
 const writeFile = data => {
-  fs.writeFile('./dist/index.html', data, err => {
+  fs.writeFile('./dist/index.html', "utf8", err => {
       if (err) {
           console.log(err);
-          return;
+// function writeFile(fileName, data) {
+//   fs.writeFile(`${fileName}.html`, generateHTML(data), "utf8", function (error) {
+//       if (error) {
+//           console.log(error);
+//           return;
+// const writeFile = fileContent => {
+//   fs.writeFile('./dist/index.html', fileContent, err => {
+//     if (err) {
+//       console.log(err);
+      return;
     }
     else{
       console.log('Congratulations! Your HTML file has been saved in the dist folder!');
@@ -220,12 +151,11 @@ const writeFile = data => {
 
 //  function to initialize app
 function init() {
-  
   inquirer
       .prompt(questions)
       .then((data) => {
           teamList.push(new manager(data.name, data.id, data.email, data.office));
-          console.log(teamList); // for checking
+          console.log(teamList); //
           addMember();
       })
       .then(teamList => {
@@ -238,16 +168,6 @@ function init() {
      console.log(err);
       });
 }
-// addManager()
-//   .then(addEmployee)
-//   .then(team => {
-//     return generateHTML(team);
-//   })
-//   .then(pageHTML => {
-//     return writeFile(pageHTML);
-//   })
-//   .catch(err => {
-//  console.log(err);
-//   });
+
 // function call to initialize app
 init();

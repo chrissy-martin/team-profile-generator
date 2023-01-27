@@ -7,7 +7,7 @@
         <div class="card h-100">
             <div class="card-header">
               <h3>${manager.name}</h3>
-              <h4>Manager</h4><i class="material-icons">content_paste</i>
+              <h4>Manager</h4><i class="fas fa-mug-hot mr-2"></i>
             </div>
             <div class="card-body">
               <p class="id">ID: ${manager.id}</p>
@@ -26,7 +26,7 @@
       <div class="card h-100">
           <div class="card-header">
             <h3>${engineer.name}</h3>
-            <h4>Engineer</h4><i class="material-icons">content_paste</i>
+            <h4>Engineer</h4><i class="fas fa-glasses mr-2"></i>
           </div>
           <div class="card-body">
             <p class="id">ID: ${engineer.id}</p>
@@ -45,7 +45,7 @@
       <div class="card h-100">
           <div class="card-header">
             <h3>${intern.name}</h3>
-            <h4>Intern</h4><i class="material-icons">content_paste</i>
+            <h4>Intern</h4><i class="fas fa-user-graduate mr-2"></i>
           </div>
           <div class="card-body">
             <p class="id">ID: ${intern.id}</p>
@@ -57,48 +57,133 @@
     `;
   }
 
-  generateHTML = (data) => {
+//   generateHTML = mergeArr => {
 
-    empList = [];
+//     empList = [];
     
-    for (let i = 0; i < data.length; i++) {
+//     for (let i = 0; i < mergeArr.length; i++) {
+//       const role = employee.getRole(); 
+
+
+//       if (role === 'Manager') {
+//           const managerCard = generateManager(employee);
+
+
+//           empList.push(managerCard);
+//       }
+
+//       if (role === 'Engineer') {
+//           const engineerCard = generateEngineer(employee);
+
+//           empList.push(engineerCard);
+//       }
+
+//       if (role === 'Intern') {
+//           const internCard = generateIntern(employee);
+
+//           empList.push(internCard);
+//         }
+//     }
+//     const teamList = empList.join(''); 
+//     return HTMLPage(teamList);
+//     // const generatePage = HTMLPage(teamList)
+//     // return generatePage; 
+
+// }
+
+// function teamList(data) {
+//   return data
+//     .map(x => {
+//       let position = x.getRole();
+//       switch (position) {
+//         case "Manager":
+//           return generateManager(x);
+//           break;
+//         case "Engineer":
+//           return generateEngineer(x);
+//           break;
+//         case "Intern":
+//           return generateIntern(x);
+//           break;
+//       }
+//     })
+//     .join("\n");
+// }
+
+// const teamList = teamArray => {
+//   let teamArr = [];
+//   const manager = teamArray.filter(team => {
+//       return team.getRole() === 'Manager';
+//   });
+//   const engineer = teamArray.filter(team => {
+//       return team.getRole() === 'Engineer';
+//   });
+//   const intern = teamArray.filter(team => {
+//       return team.getRole() === 'Intern';
+//   });
+//   if (manager) {
+//     teamArr.push(generateManager(managerTitle));
+//   } 
+//   if (engineer) {
+//     teamArr.push(generateEngineer(engineerTitle));
+//   } 
+//   if (intern) {
+//     teamArr.push(generateIntern(internTitle));
+//   }
+//   return teamArr.join('');
+//   };
+
+
+  
+// push array to page 
+generateHTML = (data) => {
+
+  // array for cards 
+  pageArray = []; 
+
+  for (let i = 0; i < data.length; i++) {
       const employee = data[i];
       const role = employee.getRole(); 
 
 
-      if (role === 'Manager') {
+      // call manager function
+      if (role === 'manager') {
           const managerCard = generateManager(employee);
 
-          
-          empList.push(managerCard);
+          pageArray.push(managerCard);
       }
 
-      if (role === 'Engineer') {
+      // call engineer function
+      if (role === 'engineer') {
           const engineerCard = generateEngineer(employee);
 
-          empList.push(engineerCard);
+          pageArray.push(engineerCard);
       }
 
-      if (role === 'Intern') {
+      // call intern function 
+      if (role === 'intern') {
           const internCard = generateIntern(employee);
 
-          empList.push(internCard);
-        }
-    }
-    const teamList = empList.join(''); 
+          pageArray.push(internCard);
+      }
+      
+  }
 
-    const generatePage = HTMLPage(teamList)
-    return generatePage; 
+  // joining strings 
+  const teamList = pageArray.join('')
+
+  // return to generated page
+  const generateTeam = generateTeamPage(teamList); 
+  return generateTeam;
 
 }
 
-
-
+// generate html page 
+const generateTeamPage = function (teamList) {   
 
 // create HTML file
-const HTMLPage = teamList => {
-
-`<!DOCTYPE html>
+// function generateHTML(data) {
+  return`<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
