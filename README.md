@@ -20,7 +20,7 @@ A Node.js command-line application that takesin information about employees on a
 
 ## Usage:
 
-After installing inquirer on Node and cloning the repo, simply run the application in the terminal using Node index.js. Follow and answer the prompts provided and an HTML index will be created. View a walk through video here: 
+After installing inquirer on Node and cloning the repo, simply run the application in the terminal using Node index.js. Follow and answer the prompts provided and an HTML index will be created. View a walk through video here: https://drive.google.com/file/d/1xWcG0jAwlVwK4XQdtTzUtSN-hVCwVULz/view
 
 ## License:
 
