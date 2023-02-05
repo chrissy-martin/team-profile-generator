@@ -1,7 +1,29 @@
-header {
+.banner {
     height: 100px;
     text-align: center;
     background-color:darkcyan;
     font-size: 60px;
+    font-weight: bold;
+}
+
+.card-section1 {
+    margin: 25px;
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.card-body {
+    background-color: rgb(108, 211, 211);
+}
+
+.card-title {
+    color: black;
+}
+
+.card-text {
+    color: black;
     font-weight: bold;
 }
